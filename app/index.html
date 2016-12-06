@@ -26,9 +26,17 @@
   <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="css/main.css" rel="stylesheet">
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="movie_list/module.js"></script>
+  <script src="movie_list/filter.js"></script>
+  <script src="common/module.js"></script>
+  <script src="movie_detail/module.js"></script>
 </head>
 
-<body>
+<body ng-app="itcast.douban">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -44,102 +52,25 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Help</a></li>
         </ul>
-        <form class="navbar-form navbar-right">
-          <input type="text" class="form-control" placeholder="Search...">
+        <form ng-controller="SearchController" ng-submit="search(search_text)" class="navbar-form navbar-right">
+          <input type="text" ng-model="search_text" class="form-control" placeholder="Search...">
         </form>
       </div>
     </div>
   </nav>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" ng-controller="SidebarController">
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
-          <li class="active"><a href="#">正在热映</a></li>
-          <li><a href="#">即将上映</a></li>
-          <li><a href="#">Top250</a></li>
-          <li><a href="#">About</a></li>
+          <li class="active"><a href="#/in_theaters">正在热映</a></li>
+          <li><a href="#/coming_soon">即将上映</a></li>
+          <li><a href="#/top250">Top250</a></li>
         </ul>
       </div>
-      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">正在热映</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">
-            <div class="media">
-              <div class="media-left" href="#">
-                <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2395733377.jpg" alt="...">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">你的名字</h4>
-                <p>类型：剧情、爱情、动画</p>
-                <p>导演：新海诚</p>
-                <p>主演：神木隆之介、上白石萌音、长泽雅美</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="list-group-item">
-            <span class="badge" class="pull-right">42</span>
-            <div class="media">
-              <div class="media-left" href="#">
-                <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2395733377.jpg" alt="...">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">你的名字</h4>
-                <p>类型：剧情、爱情、动画</p>
-                <p>导演：新海诚</p>
-                <p>主演：神木隆之介、上白石萌音、长泽雅美</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="list-group-item">
-            <div class="media">
-              <div class="media-left" href="#">
-                <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2395733377.jpg" alt="...">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">你的名字</h4>
-                <p>类型：剧情、爱情、动画</p>
-                <p>导演：新海诚</p>
-                <p>主演：神木隆之介、上白石萌音、长泽雅美</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="list-group-item">
-            <div class="media">
-              <div class="media-left" href="#">
-                <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2395733377.jpg" alt="...">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">你的名字</h4>
-                <p>类型：剧情、爱情、动画</p>
-                <p>导演：新海诚</p>
-                <p>主演：神木隆之介、上白石萌音、长泽雅美</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="list-group-item">
-            <div class="media">
-              <div class="media-left" href="#">
-                <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2395733377.jpg" alt="...">
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">你的名字</h4>
-                <p>类型：剧情、爱情、动画</p>
-                <p>导演：新海诚</p>
-                <p>主演：神木隆之介、上白石萌音、长泽雅美</p>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item">Morbi leo risus</a>
-          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-          <a href="#" class="list-group-item">Vestibulum at eros</a>
-        </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
       </div>
     </div>
   </div>
-  <script src="../node_modules/jquery/dist/jquery.js"></script>
-  <script src="../node_modules/angular/angular.js"></script>
-  <script src="app.js"></script>
 </body>
 
 </html>
